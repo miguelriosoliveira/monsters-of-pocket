@@ -3,12 +3,13 @@
 POKEAPI='http://pokeapi.co/api/v2/'
 TO_DOWNLOAD=$1
 GENERATION=$2
-HELP_TEXT="Usage:\tsh scripts/data_capture.sh <what_to_download> <generation_number>\n
+HELP_TEXT="Usage:\tsh scripts/data_capture.sh <what_to_download> <generation_number> <save_sprites>\n
 \t<what_to_download>:\n
     \t\tpokemon: update pokémon data\n
     \t\ttypes: update types data\n
     \t\tmoves: update moves data\n
-\t<generation_number>: Only generations between 1 and 6 available"
+\t<generation_number>: Only generations between 1 and 6 available\n
+\t<save_sprites>: Want to update the sprites? yes or no"
 
 case ${TO_DOWNLOAD} in
 	'pokemon')
@@ -63,5 +64,8 @@ cd ${DIR}
 for i in ${GEN_INTERVAL}
 do
     echo "Getting data of pokémon #$i"
-    wget -nv ${POKEAPI}'pokemon/'${i} -O ${i}'.json'
+    JSON_FILE=${i}'.json'
+    wget -nc ${POKEAPI}'pokemon/'${i} -O ${JSON_FILE}
+    SPRITE_FRONT=`cat ${JSON_FILE} | jq -r '.sprites.front_default'`
+    wget -nc ${SPRITE_FRONT}
 done
