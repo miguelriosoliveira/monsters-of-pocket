@@ -31,7 +31,7 @@ var Species = function (name) {
 
 /**
  * Pokémon move class. Like vine seed, thundershock, water gun, etc.
- * @constructor.
+ * @constructor
  */
 
 var Move = function (id, name, type, category, pp, power, accuracy) {
