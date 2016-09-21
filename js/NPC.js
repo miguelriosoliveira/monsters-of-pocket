@@ -2,11 +2,11 @@
  * Created by Gabriel on 20/09/2016.
  */
 /*
-    @id
-    @name
-    @sprite
-    @pokemonList
-    @itens
+
+    @param name
+    @param sprite
+    @param pokemonList
+    @param itens
  */
 var NPC = function(name, sprite, pokemonList, itens){
     this.name = name;

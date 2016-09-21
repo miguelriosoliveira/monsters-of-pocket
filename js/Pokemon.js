@@ -33,10 +33,13 @@ var Species = function (name) {
  * Pokémon move class. Like vine seed, thundershock, water gun, etc.
  * @constructor
  */
-var Move = function () {
+
+var Move = function (id, name, type, category, pp, power, accuracy) {
+    this.id = id;
     this.name = name;
-    this.type = (function () {
-        // return type of 'this.name'
-    }());
-    this.isPhysical = true;
-};
+    this.type = type;
+    this.category = category;
+    this.pp = pp;
+    this.power = power;
+    this.accuracy = accuracy;
+}
