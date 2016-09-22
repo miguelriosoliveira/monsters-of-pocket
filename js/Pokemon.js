@@ -10,10 +10,10 @@
  * @constructor
  */
 var Pokemon = function (species, level, nickname) {
-    this.species = species;
-    this.level = level;
-    this.nickname = nickname;
-    this.moves = [null, null, null, null];
+	this.species = species;
+	this.level = level;
+	this.nickname = nickname || this.species;
+	this.moves = [null, null, null, null];
 };
 
 /**
@@ -23,23 +23,29 @@ var Pokemon = function (species, level, nickname) {
  * @constructor
  */
 var Species = function (name) {
-    this.name = name;
-    this.type = (function () {
-        // return type of 'this.name'
-    }());
+	this.name = name;
+	this.type = (function () {
+		// return type of 'this.name'
+	}());
 };
 
 /**
  * Pokémon move class. Like vine seed, thundershock, water gun, etc.
+ * @param id
+ * @param name
+ * @param type
+ * @param category
+ * @param pp
+ * @param power
+ * @param accuracy
  * @constructor
  */
-
 var Move = function (id, name, type, category, pp, power, accuracy) {
-    this.id = id;
-    this.name = name;
-    this.type = type;
-    this.category = category;
-    this.pp = pp;
-    this.power = power;
-    this.accuracy = accuracy;
-}
+	this.id = id;
+	this.name = name;
+	this.type = type;
+	this.category = category;
+	this.pp = pp;
+	this.power = power;
+	this.accuracy = accuracy;
+};

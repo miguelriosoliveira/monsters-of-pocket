@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>GENERIC POKÉMON GAME</title>
-    <link href="css/main.css">
-    <script src="js/main.js"></script>
+	<meta charset="UTF-8">
+	<title>GENERIC POKÉMON GAME</title>
+	<link href="css/main.css">
+	<!-- data-main attribute tells require.js to load scripts/main.js after require.js loads. -->
+	<script data-main="js/main" src="js/libs/require.js" async></script>
+
 </head>
 <body>
 
-<h1>HELLO FROM PROFESSOR OAK!</h1>
-<img src="img/oak.png">
-<img src="img/choose.jpg">
+<canvas id="game-screen" width="800px" height="600px"></canvas>
 
 </body>
 </html>
