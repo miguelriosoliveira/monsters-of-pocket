@@ -21,4 +21,16 @@ requirejs(["NPC", "Player", "Pokemon"], function (_NPC, _Player, _Pokemon) {
 
 	console.log('Red choose Charmander!');
 	console.log('So Blue will choose Squirtle!');
+
+    var img1 = new Image();
+    img1.src = 'img/oak.png';
+    var img2 = new Image();
+    img2.src = 'img/choose.jpg';
+
+    img1.onload = function(){
+        ctx.drawImage(img1, 0, 0);
+    }
+    img2.onload = function(){
+        ctx.drawImage(img2, 200,0, 300, 200);
+    }
 });
