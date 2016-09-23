@@ -3,15 +3,15 @@
  */
 /*
 
-    @param name
-    @param sprite
-    @param pokemonList
-    @param itens
+	@param name
+	@param sprite
+	@param pokemonList
+	@param itens
  */
 var NPC = function(name, sprite, pokemonList, itens){
-    this.name = name;
-    this.sprite = sprite;
-    this.pokemonList = pokemonList;
-    this.itens = itens;
+	this.name = name;
+	this.sprite = sprite;
+	this.pokemonList = pokemonList;
+	this.itens = itens;
 
  }
