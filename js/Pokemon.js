@@ -15,7 +15,7 @@ var Pokemon = function (species, level, nickname) {
 	this.nickname = nickname;
 	this.moves = [null, null, null, null];
 	this.sprite = function () {
-		// TODO Select sprite according to species ID
+		//TODO Select sprite according to species ID
 	}
 };
 
