@@ -6,12 +6,12 @@ requirejs(["NPC", "Player", "Pokemon"], function (_NPC, _Player, _Pokemon) {
 
     // canvas and logger setup
     var canvas = document.getElementById('game-screen');
-    canvas.setAttribute('width', ((2/3)*screen.availWidth).toString());
-    canvas.setAttribute('height', ((2/3)*screen.availHeight).toString());
+	canvas.setAttribute('width', ((3 / 5) * screen.availWidth).toString());
+	canvas.setAttribute('height', ((3 / 5) * screen.availHeight).toString());
     var ctx = canvas.getContext("2d");
     var logger = document.getElementById('left-logger');
-    logger.style.maxWidth = ((1/3)*screen.availWidth).toString()+'px';
-    logger.style.maxHeight = screen.availHeight.toString()+'px';
+	logger.style.width = ((1 / 3) * screen.availWidth).toString() + 'px';
+	logger.style.height = screen.availHeight.toString() + 'px';
 
     // criar player
     var player = new Player('Red', 'M');
@@ -24,9 +24,6 @@ requirejs(["NPC", "Player", "Pokemon"], function (_NPC, _Player, _Pokemon) {
     var items = ['pokedex'];
     var oak = new NPC('Professor Oak', '', starters, items);
     var rival = new NPC('Blue', '', [], []);
-
-    console.log('Red choose Charmander!');
-    console.log('So Blue will choose Squirtle!');
 
     var img1 = new Image();
     img1.src = 'img/oak.png';
