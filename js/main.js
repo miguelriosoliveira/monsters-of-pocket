@@ -1,17 +1,34 @@
 /**
  * Created by miguel on 17/09/16.
  */
-requirejs(["NPC", "Player", "Pokemon"], function (_NPC, _Player, _Pokemon) {
-    //This function is called when the scripts are loaded.
 
-    // canvas and logger setup
-    var canvas = document.getElementById('game-screen');
+/**
+ * Canvas and logger setup
+ */
+function init() {
+	var canvas = document.getElementById('game-screen');
 	canvas.setAttribute('width', ((3 / 5) * screen.availWidth).toString());
 	canvas.setAttribute('height', ((3 / 5) * screen.availHeight).toString());
-    var ctx = canvas.getContext("2d");
-    var logger = document.getElementById('left-logger');
+	var ctx = canvas.getContext("2d");
+
+	var logger = document.getElementById('left-logger');
 	logger.style.width = ((1 / 3) * screen.availWidth).toString() + 'px';
 	logger.style.height = screen.availHeight.toString() + 'px';
+
+	// capturando logs do console.log
+	redirectLog(logger);
+}
+
+function redirectLog(loggerTag) {
+	console.log = function (message) {
+		// redirect message to the logger
+		loggerTag.innerHTML += message + '\n';
+		loggerTag.scrollTop = loggerTag.scrollHeight;
+	};
+}
+
+requirejs(["NPC", "Player", "Pokemon"], function (_NPC, _Player, _Pokemon) {
+	init();
 
     // criar player
     var player = new Player('Red', 'M');
