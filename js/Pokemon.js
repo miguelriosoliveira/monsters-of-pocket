@@ -14,13 +14,19 @@ var Pokemon = function (species, level, nickname) {
 	this.level = level;
 	this.nickname = nickname || this.species;
 	this.moves = [null, null, null, null];
-	this.species = species;
-	this.level = level;
-	this.nickname = nickname;
-	this.moves = [null, null, null, null];
+	this.current_exp = 0;
 	this.sprite = function () {
-		//TODO Select sprite according to species ID
-	}
+		return "img/sprite_pkm/" + this.species.id + ".png";
+	};
+	lvup = function (exp) {
+		this.current_exp -= exp;
+		if (this.current_exp < 1){
+			this.level += 1;								//level added
+			exp = this.current_exp;							//exceeding  exp sent to a new variable
+			this.current_exp = Math.pow(this.level, 3); 	//exp for next lv
+			this.current_exp += exp; 						//exceeding last lv exp being subtracted from current exp
+		}
+	};
 };
 
 /**
@@ -50,7 +56,7 @@ var Species = function (id, name, hp, att, def, spd, satt, sdef, base_exp, type)
 	this.sdef = sdef;
 	this.base_exp = base_exp;
 	this.type = type;
-	}
+};
 
 /**
  * Pokémon move class. Like vine seed, thundershock, water gun, etc.
