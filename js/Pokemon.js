@@ -18,7 +18,7 @@ var Pokemon = function (species, level, nickname) {
 	this.sprite = function () {
 		return "img/sprite_pkm/" + this.species.id + ".png";
 	};
-	lvup = function (exp) {
+	this.levelUp = function (exp) {
 		this.current_exp -= exp;
 		if (this.current_exp < 1){
 			this.level += 1;								//level added
@@ -31,7 +31,6 @@ var Pokemon = function (species, level, nickname) {
 
 /**
  * Pokémon species class. Like bulbassaur, pikachu, squirtle, etc.
- * TODO: we need a list of all 151 species
  * Pokemon base stats: Hp, Attack, Defense, Speed, Special Attack, Special Defense
  * @param id
  * @param name

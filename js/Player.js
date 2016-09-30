@@ -22,11 +22,16 @@ var Player = function (name, gender) {
 	this.pokedex = 0;
 	this.initTime = new Date();
 	this.badges = [];
-
 	this.playTime = function () {
 		var currentTime = new Date();
 		return currentTime - this.initTime;
-	}
+	};
+	this.sprites = {
+		front: null,
+		back: null,
+		left: null,
+		right: null
+	};
 };
 
 /**

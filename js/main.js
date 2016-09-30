@@ -30,23 +30,23 @@ function redirectLog(loggerTag) {
 requirejs(["NPC", "Player", "Pokemon"], function (_NPC, _Player, _Pokemon) {
 	init();
 
-    // criar player
-    var player = new Player('Red', 'M');
+	// criar player
+	var player = new Player('Red', 'M');
 
-    // criar prof carvalho e rival
-    var bulbasaur = new Pokemon('bulbasaur', 1);
-    var squirtle = new Pokemon('squirtle', 1);
-    var charmander = new Pokemon('charmander', 1);
-    var starters = [bulbasaur, squirtle, charmander];
-    var items = ['pokedex'];
-    var oak = new NPC('Professor Oak', '', starters, items);
-    var rival = new NPC('Blue', '', [], []);
+	// criar prof carvalho e rival
+	var bulbasaur = new Pokemon('bulbasaur', 1);
+	var squirtle = new Pokemon('squirtle', 1);
+	var charmander = new Pokemon('charmander', 1);
+	var starters = [bulbasaur, squirtle, charmander];
+	var items = ['pokedex'];
+	var oak = new NPC('Professor Oak', '', starters, items);
+	var rival = new NPC('Blue', '', [], []);
 
-    var img1 = new Image();
-    img1.src = 'img/oak.png';
-    var img2 = new Image();
-    img2.src = 'img/choose.jpg';
+	var img1 = new Image();
+	img1.src = 'img/oak.png';
+	var img2 = new Image();
+	img2.src = 'img/choose.jpg';
 
-    // ctx.drawImage(img1, 0, 0);
-    // ctx.drawImage(img2, 200, 0, 300, 200);
+	// ctx.drawImage(img1, 0, 0);
+	// ctx.drawImage(img2, 200, 0, 300, 200);
 });
