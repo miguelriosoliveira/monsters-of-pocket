@@ -43,8 +43,30 @@ requirejs(["NPC", "Player", "Pokemon"], function (_NPC, _Player, _Pokemon) {
     var rival = new NPC('Blue', '', [], []);
 
    //sprite do player na tela
+	var canvas = document.getElementById('game-screen');
+	var ctx = canvas.getContext('2d');
 	var img_player = new Image();
-	img_player.src = player.sprite();
+
+	img_player.src = player.sprite;
+	img_player.src += 'Player_Back_0.png';
+
+	img_player.onload = function () {
+		player.position[0] = canvas.getAttribute('width')/2;
+		player.position[1] = canvas.getAttribute('height')/2;
+		ctx.drawImage(img_player, player.position[0], player.position[1]);
+	};
+
+	//animaçao de andar
+
+
+	/*
+	 arrow keys are only triggered by onkeydown, not onkeypress
+	 keycodes are:
+	 left = 37
+	 up = 38
+	 right = 39
+	 down = 40
+	 */
 
 	//example of how to draw on canvas
 	//var img2 = new Image();
