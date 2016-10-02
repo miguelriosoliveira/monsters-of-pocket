@@ -18,7 +18,8 @@ var Pokemon = function (species, level, nickname) {
 	this.sprite = function () {
 		return "img/sprite_pkm/" + this.species.id + ".png";
 	};
-	lvup = function (exp) {
+
+	levelUp = function (exp) {
 		this.current_exp -= exp;
 		if (this.current_exp < 1){
 			this.level += 1;								//level added

@@ -23,9 +23,21 @@ var Player = function (name, gender) {
 	this.initTime = new Date();
 	this.badges = [];
 
+	this.sprite = function () {
+		if (this.gender == 'M'){
+			return ('img/Sprites_Male_Player/');
+		} else {
+			return ('img/Sprites_Female_Player/');
+		}
+	};
+
 	this.playTime = function () {
 		var currentTime = new Date();
 		return currentTime - this.initTime;
+	};
+
+	Walk_Ahead = function (ctx, img) {
+
 	}
 };
 

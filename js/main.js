@@ -42,11 +42,16 @@ requirejs(["NPC", "Player", "Pokemon"], function (_NPC, _Player, _Pokemon) {
     var oak = new NPC('Professor Oak', '', starters, items);
     var rival = new NPC('Blue', '', [], []);
 
-    var img1 = new Image();
-    img1.src = 'img/oak.png';
-    var img2 = new Image();
-    img2.src = 'img/choose.jpg';
+   //sprite do player na tela
+	var img_player = new Image();
+	img_player.src = player.sprite();
 
-    // ctx.drawImage(img1, 0, 0);
-    // ctx.drawImage(img2, 200, 0, 300, 200);
+	//example of how to draw on canvas
+	//var img2 = new Image();
+	//img2.src = 'img/choose.jpg';
+	//var canvas = document.getElementById("game-screen");
+	//var ctx = canvas.getContext("2d");
+	//img2.onload = function (){
+	//	ctx.drawImage(img2, 0, 0);
+	//}
 });
