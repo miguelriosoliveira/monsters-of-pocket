@@ -30,23 +30,48 @@ function redirectLog(loggerTag) {
 requirejs(["NPC", "Player", "Pokemon"], function (_NPC, _Player, _Pokemon) {
 	init();
 
-	// criar player
-	var player = new Player('Red', 'M');
+    // criar player
+    var player = new Player('Red', 'M');
 
-	// criar prof carvalho e rival
-	var bulbasaur = new Pokemon('bulbasaur', 1);
-	var squirtle = new Pokemon('squirtle', 1);
-	var charmander = new Pokemon('charmander', 1);
-	var starters = [bulbasaur, squirtle, charmander];
-	var items = ['pokedex'];
-	var oak = new NPC('Professor Oak', '', starters, items);
-	var rival = new NPC('Blue', '', [], []);
+    // criar prof carvalho e rival
+    var bulbasaur = new Pokemon('bulbasaur', 1);
+    var squirtle = new Pokemon('squirtle', 1);
+    var charmander = new Pokemon('charmander', 1);
+    var starters = [bulbasaur, squirtle, charmander];
+    var items = ['pokedex'];
+    var oak = new NPC('Professor Oak', '', starters, items);
+    var rival = new NPC('Blue', '', [], []);
 
-	var img1 = new Image();
-	img1.src = 'img/oak.png';
-	var img2 = new Image();
-	img2.src = 'img/choose.jpg';
+   //sprite do player na tela
+	var img_player = new Image();
 
-	// ctx.drawImage(img1, 0, 0);
-	// ctx.drawImage(img2, 200, 0, 300, 200);
+	img_player.src = player.sprite;
+	img_player.src += 'Player_Back_0.png';
+
+	img_player.onload = function () {
+		player.position[0] = canvas.getAttribute('width')/2;
+		player.position[1] = canvas.getAttribute('height')/2;
+		ctx.drawImage(img_player, player.position[0], player.position[1]);
+	};
+
+	//animaçao de andar
+
+
+	/*
+	 arrow keys are only triggered by onkeydown, not onkeypress
+	 keycodes are:
+	 left = 37
+	 up = 38
+	 right = 39
+	 down = 40
+	 */
+
+	//example of how to draw on canvas
+	//var img2 = new Image();
+	//img2.src = 'img/choose.jpg';
+	//var canvas = document.getElementById("game-screen");
+	//var ctx = canvas.getContext("2d");
+	//img2.onload = function (){
+	//	ctx.drawImage(img2, 0, 0);
+	//}
 });
