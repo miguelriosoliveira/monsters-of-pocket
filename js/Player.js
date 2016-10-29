@@ -2,6 +2,7 @@
  * Created by miguel on 17/09/16.
  */
 
+
 /**
  * Player class.
  * @param name
@@ -14,7 +15,7 @@ var Player = function (name, gender) {
 	this.pokemonList = [];
 	this.bag = new Bag();
 	this.zone = 0; //Zone of the world where the player is located
-	this.position = []; //Player position in a zone X, Y
+	this.position = new Position(0, 0); //Player position in a zone X, Y
 	this.id = (function () {
 		var d = new Date();
 		var id = '' + d.getFullYear() + d.getMonth() + d.getDate() + d.getHours() + d.getMinutes() + d.getSeconds();
@@ -32,21 +33,29 @@ var Player = function (name, gender) {
 		return currentTime - this.initTime;
 	};
 
-	//wak animation, currently, well... its a mess, don't activate this shit
-	this.Walk_Ahead = function (ctx, img) {
-		var img2 = new Image();
-		for (var i = 1; i++; i<3){
-			img2.src = "Player_Back_" + i + ".png";
-			var img3 = new Image();
-			img3 = img.src + img2.src;
-			console.log(img3.src);
-			img3.onload = function (){
-				var x = canvas.getAttribute('width')/2;
-				var y = canvas.getAttribute('height')/2;
-				ctx.drawImage(img3, x, y);
-			}
+	this.moveUp = function (delta, upLimit) {
+		if (this.position.y - delta > upLimit) {
+			this.position.y -= delta;
 		}
-	}
+	};
+
+	this.moveRight = function (delta, rightLimit) {
+		if (this.position.x + delta < rightLimit) {
+			this.position.x += delta;
+		}
+	};
+
+	this.moveDown = function (delta, downLimit) {
+		if (this.position.y + delta < downLimit) {
+			this.position.y += delta;
+		}
+	};
+
+	this.moveLeft = function (delta, leftLimit) {
+		if (this.position.x - delta > leftLimit) {
+			this.position.x -= delta;
+		}
+	};
 };
 
 /**
@@ -57,4 +66,9 @@ var Bag = function () {
 	this.items = [];
 	this.keyItems = [];
 	this.pokeballs = [];
+};
+
+var Position = function (x, y) {
+	this.x = x;
+	this.y = y;
 };
