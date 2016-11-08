@@ -21,7 +21,7 @@ case ${TO_DOWNLOAD} in
 	'moves')
 		echo 'Updating moves data...'
 	;;
-	*)  echo ${HELP_TEXT}
+	*)  echo -e ${HELP_TEXT}
 	    exit 1
 esac
 
@@ -52,7 +52,7 @@ case ${GENERATION} in
 		echo 'Pokémon interval: 650~721'
 	    GEN_INTERVAL=`seq 650 721`
 	;;
-	*)  echo ${HELP_TEXT}
+	*)  echo -e ${HELP_TEXT}
 		exit 1
 	;;
 esac
