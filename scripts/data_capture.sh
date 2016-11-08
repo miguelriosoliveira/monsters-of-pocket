@@ -3,13 +3,13 @@
 POKEAPI='http://pokeapi.co/api/v2/'
 TO_DOWNLOAD=$1
 GENERATION=$2
-HELP_TEXT="Usage:\tsh scripts/data_capture.sh <what_to_download> <generation_number> <save_sprites>\n
+HELP_TEXT="-e Usage:\tsh scripts/data_capture.sh <what_to_download> <generation_number> <save_sprites>\n
 \t<what_to_download>:\n
     \t\tpokemon: update pokémon data\n
     \t\ttypes: update types data\n
     \t\tmoves: update moves data\n
-\t<generation_number>: Only generations between 1 and 6 available\n
-\t<save_sprites>: Want to update the sprites? yes or no"
+\t<generation_number>:\tOnly generations between 1 and 6 available\n
+\t<save_sprites>:\tWant to update the sprites? yes or no"
 
 case ${TO_DOWNLOAD} in
 	'pokemon')
@@ -21,7 +21,7 @@ case ${TO_DOWNLOAD} in
 	'moves')
 		echo 'Updating moves data...'
 	;;
-	*)  echo -e ${HELP_TEXT}
+	*)  echo ${HELP_TEXT}
 	    exit 1
 esac
 
@@ -52,7 +52,7 @@ case ${GENERATION} in
 		echo 'Pokémon interval: 650~721'
 	    GEN_INTERVAL=`seq 650 721`
 	;;
-	*)  echo -e ${HELP_TEXT}
+	*)  echo ${HELP_TEXT}
 		exit 1
 	;;
 esac
