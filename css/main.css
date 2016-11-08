@@ -1,25 +1,23 @@
 #game-screen {
-    border: 1px solid #000000;
-	/*left: 0;*/
+	border: 1px solid #000000;
 	margin: 1%;
 }
 
 .logger {
-    padding: 10px;
-    word-break: break-all;
-    word-wrap: break-word;
-    background-color: #f5f5f5;
-    border: 1px solid #ccc;
+	padding: 10px;
+	word-break: break-all;
+	word-wrap: break-word;
+	background-color: #f5f5f5;
+	border: 1px solid #ccc;
 }
 
 #game-screen, #left-logger {
-    position: fixed;
+	position: fixed;
 	border-radius: 4px;
 }
 
 #left-logger {
-	/*top: 0;*/
-    right: 0;
+	right: 0;
 	margin-right: 1.5%;
 	overflow: scroll;
 }
