@@ -2,9 +2,8 @@
  * Created by miguel on 17/09/16.
  */
 
-
 /**
- * Player class.
+ * Player class
  * @param name
  * @param gender
  * @constructor
@@ -14,24 +13,21 @@ var Player = function (name, gender) {
 	this.gender = gender;
 	this.pokemonList = [];
 	this.bag = new Bag();
-	this.zone = 0; //Zone of the world where the player is located
 	this.position = new Position(0, 0); //Player position in a zone X, Y
-	this.id = (function () {
-		var d = new Date();
-		var id = '' + d.getFullYear() + d.getMonth() + d.getDate() + d.getHours() + d.getMinutes() + d.getSeconds();
-		return Number(id);
-	}());
+	this.zone = 0; //Zone of the world where the player is located
+	this.id = createId();
 	this.money = 0;
 	this.pokedex = 0;
 	this.initTime = new Date();
 	this.badges = [];
-
-	this.sprite = 'img/Sprites_Male_Player/';
+	this.sprite = 'img/Sprites_Male_Player/sprite_sheet_male1-01.png';
 
 	this.playTime = function () {
 		var currentTime = new Date();
 		return currentTime - this.initTime;
 	};
+
+	/* movement */
 
 	this.moveUp = function (delta, upLimit) {
 		if (this.position.y - delta > upLimit) {
@@ -56,7 +52,22 @@ var Player = function (name, gender) {
 			this.position.x -= delta;
 		}
 	};
+
+	/* draw */
+
+	this.draw = function (ctx) {
+		var player = new Image();
+		player.src = this.sprite;
+		ctx.drawImage(player, this.position.x, this.position.y);
+	}
 };
+
+/* creates an id based on  */
+function createId() {
+	var d = new Date();
+	var id = '' + d.getFullYear() + d.getMonth() + d.getDate() + d.getHours() + d.getMinutes() + d.getSeconds();
+	return Number(id);
+}
 
 /**
  * Bag class.
