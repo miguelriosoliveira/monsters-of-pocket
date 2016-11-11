@@ -12,8 +12,8 @@ define(function () {
      */
     var Constants = function (canvas, logger) {
         /* game screen values */
-        this.SCREEN_WIDTH = (3 / 5) * screen.availWidth;
-        this.SCREEN_HEIGHT = (3 / 5) * screen.availHeight;
+        this.SCREEN_WIDTH = Math.round((3 / 5) * screen.availWidth);
+        this.SCREEN_HEIGHT = Math.round((3 / 5) * screen.availHeight);
 
         /* player values */
         this.PLAYER_WIDTH = this.PLAYER_HEIGHT = Math.round((1 / 100) * this.SCREEN_WIDTH);
