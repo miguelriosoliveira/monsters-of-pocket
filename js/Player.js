@@ -22,8 +22,8 @@ var Player = function (name, gender) {
 	this.badges = [];
 
 	this.sprite = createImg('img/Sprites_Male_Player/sprite_sheet_male1-01.png');
-	this.width = 10; //sprite's width and height
-	this.height = 14;
+    this.width = 13; //sprite's width and height
+    this.height = 17;
 
 	this.playTime = function () {
 		var currentTime = new Date();
@@ -63,9 +63,10 @@ var Player = function (name, gender) {
 	/* draw */
 
 	this.draw = function (ctx) {
-		var player = new Image();
-		player.src = this.sprite;
-		ctx.drawImage(player, this.position.x, this.position.y);
+        // s: source image
+        // d: destination canvas
+        // ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
+        ctx.drawImage(this.sprite, 0, 0, this.width, this.height, this.position.x, this.position.y, this.width * 2, this.height * 2);
 	}
 };
 
