@@ -9,7 +9,6 @@ var logger = document.getElementById('left-logger');
 
 requirejs(["Constants", "NPC", "Player", "Pokemon"], function (Constants, _NPC, _Player, _Pokemon) {
 
-    console.log(Constants);
     // constants of the game
     var constants = new Constants(canvas, logger);
 
@@ -52,19 +51,20 @@ requirejs(["Constants", "NPC", "Player", "Pokemon"], function (Constants, _NPC, 
 
     /* keyboard listener */
     function keyDown(evt) {
-        var delta = 10;
         switch (evt.keyCode) {
             case 38:  /* Up arrow was pressed */
-                player.moveUp(delta, 0);
+                player.moveUp(constants.STEP_SIZE, 0);
                 break;
             case 39:  /* Right arrow was pressed */
-                player.moveRight(delta, constants.SCREEN_WIDTH);
+                // TODO: não deveria estar assim, adicionar width e height no player
+                player.moveRight(constants.STEP_SIZE, constants.SCREEN_WIDTH - constants.PLAYER_WIDTH);
                 break;
             case 40:  /* Down arrow was pressed */
-                player.moveDown(delta, constants.SCREEN_HEIGHT);
+                // TODO: não deveria estar assim, adicionar width e height no player
+                player.moveDown(constants.STEP_SIZE, constants.SCREEN_HEIGHT - constants.PLAYER_HEIGHT);
                 break;
             case 37:  /* Left arrow was pressed */
-                player.moveLeft(delta, 0);
+                player.moveLeft(constants.STEP_SIZE, 0);
                 break;
         }
     }

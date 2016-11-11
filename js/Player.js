@@ -30,27 +30,31 @@ var Player = function (name, gender) {
 	/* movement */
 
 	this.moveUp = function (delta, upLimit) {
-		if (this.position.y - delta > upLimit) {
+        if (this.position.y - delta >= upLimit) {
 			this.position.y -= delta;
 		}
+        console.log(this.position);
 	};
 
 	this.moveRight = function (delta, rightLimit) {
 		if (this.position.x + delta < rightLimit) {
 			this.position.x += delta;
 		}
+        console.log(this.position);
 	};
 
 	this.moveDown = function (delta, downLimit) {
 		if (this.position.y + delta < downLimit) {
 			this.position.y += delta;
 		}
+        console.log(this.position);
 	};
 
 	this.moveLeft = function (delta, leftLimit) {
-		if (this.position.x - delta > leftLimit) {
+        if (this.position.x - delta >= leftLimit) {
 			this.position.x -= delta;
 		}
+        console.log(this.position);
 	};
 
 	/* draw */
@@ -82,4 +86,7 @@ var Bag = function () {
 var Position = function (x, y) {
 	this.x = x;
 	this.y = y;
+    this.toString = function () {
+        return '(' + this.x + ', ' + this.y + ')';
+    }
 };

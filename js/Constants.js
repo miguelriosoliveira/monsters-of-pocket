@@ -15,6 +15,12 @@ define(function () {
         this.SCREEN_WIDTH = (3 / 5) * screen.availWidth;
         this.SCREEN_HEIGHT = (3 / 5) * screen.availHeight;
 
+        /* player values */
+        this.PLAYER_WIDTH = this.PLAYER_HEIGHT = Math.round((1 / 100) * this.SCREEN_WIDTH);
+
+        /* movement values */
+        this.STEP_SIZE = this.PLAYER_WIDTH;
+
         /* canvas setup */
         canvas.setAttribute('width', this.SCREEN_WIDTH.toString());
         canvas.setAttribute('height', this.SCREEN_HEIGHT.toString());
@@ -22,7 +28,7 @@ define(function () {
         /* logger setup */
         logger.style.width = ((1 / 3) * screen.availWidth).toString() + 'px';
         logger.style.height = this.SCREEN_HEIGHT + 'px';
-        // redirectLog(logger);
+        redirectLog(logger);
     };
 
     /* redirect messages to the logger */
