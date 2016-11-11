@@ -46,12 +46,12 @@ requirejs(["NPC", "Player", "Pokemon"], function (_NPC, _Player, _Pokemon) {
 	//sprite do player na tela
 	var img_player = new Image();
 
-	img_player.src = player.sprite;
-	img_player.src += 'Player_Back_0.png';
+	img_player = player.sprite; //player.sprite is an image type
+	//img_player.src += 'Player_Back_0.png';  como estamos utilizando uma spritesheet essa linha n serve mais
 
 	img_player.onload = function () {
 		player.position = new Position(canvas.getAttribute('width') / 2, canvas.getAttribute('height') / 2);
-		ctx.drawImage(img_player, player.position.x, player.position.y);
+		ctx.drawImage(img_player, 2, 2, player.width, player.height, player.position.x, player.position.y, player.width, player.height);
 	};
 
 	//animaçao de andar

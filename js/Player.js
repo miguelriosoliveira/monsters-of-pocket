@@ -26,7 +26,10 @@ var Player = function (name, gender) {
 	this.initTime = new Date();
 	this.badges = [];
 
-	this.sprite = 'img/Sprites_Male_Player/';
+	this.sprite = new Image();
+	this.sprite.src = 'img/Sprites_Male_Player/sprite_sheet_male1-01.png';
+	this.width = 10; //sprite's width and height
+	this.height = 14;
 
 	this.playTime = function () {
 		var currentTime = new Date();
