@@ -20,7 +20,10 @@ var Player = function (name, gender) {
 	this.pokedex = 0;
 	this.initTime = new Date();
 	this.badges = [];
-	this.sprite = 'img/Sprites_Male_Player/sprite_sheet_male1-01.png';
+
+	this.sprite = createImg('img/Sprites_Male_Player/sprite_sheet_male1-01.png');
+	this.width = 10; //sprite's width and height
+	this.height = 14;
 
 	this.playTime = function () {
 		var currentTime = new Date();
@@ -68,9 +71,16 @@ var Player = function (name, gender) {
 
 /* creates an id based on  */
 function createId() {
-	var d = new Date();
-	var id = '' + d.getFullYear() + d.getMonth() + d.getDate() + d.getHours() + d.getMinutes() + d.getSeconds();
-	return Number(id);
+    var d = new Date();
+    var id = '' + d.getFullYear() + d.getMonth() + d.getDate() + d.getHours() + d.getMinutes() + d.getSeconds();
+    return Number(id);
+}
+
+/* creates an image obj */
+function createImg(imgPath) {
+    var img = new Image();
+    img.src = imgPath;
+    return img;
 }
 
 /**

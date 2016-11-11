@@ -1,0 +1,2 @@
+10px largura
+14px altura
