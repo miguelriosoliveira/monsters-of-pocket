@@ -58,13 +58,11 @@ requirejs(["Constants", "NPC", "Player", "Pokemon"], function (Constants, NPC, P
                 break;
             case 'ArrowRight':
             case 'd':
-                // TODO: não deveria estar assim, adicionar width e height no player
-                player.moveRight(constants.STEP_SIZE, constants.SCREEN_WIDTH - player.width);
+                player.moveRight(constants.STEP_SIZE, constants.SCREEN_WIDTH);
                 break;
             case 'ArrowDown':
             case 's':
-                // TODO: não deveria estar assim, adicionar width e height no player
-                player.moveDown(constants.STEP_SIZE, constants.SCREEN_HEIGHT - player.height);
+                player.moveDown(constants.STEP_SIZE, constants.SCREEN_HEIGHT);
                 break;
             case 'ArrowLeft':
             case 'a':

@@ -40,14 +40,14 @@ var Player = function (name, gender) {
 	};
 
 	this.moveRight = function (delta, rightLimit) {
-		if (this.position.x + delta < rightLimit) {
+		if (this.position.x + delta < rightLimit - this.width) {
 			this.position.x += delta;
 		}
         console.log(this.position);
 	};
 
 	this.moveDown = function (delta, downLimit) {
-		if (this.position.y + delta < downLimit) {
+		if (this.position.y + delta < downLimit - this.height) {
 			this.position.y += delta;
 		}
         console.log(this.position);
