@@ -7,10 +7,13 @@ var canvas = document.getElementById('game-screen');
 var ctx = canvas.getContext("2d");
 var logger = document.getElementById('left-logger');
 
-requirejs(["Animation", "Constants", "NPC", "Player", "Pokemon"], function (Animation, Constants, NPC, Player, Pokemon) {
+requirejs(["Animation", "Constants", "Menu", "NPC", "Player", "Pokemon"], function (Constants, Menu, NPC, Player, Pokemon) {
 
     // constants of the game
     var constants = new Constants(canvas, logger);
+
+    // the menu
+    var menu = new Menu(constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT);
 
     // the player
     var player = new Player('Red', 'M');
@@ -35,6 +38,7 @@ requirejs(["Animation", "Constants", "NPC", "Player", "Pokemon"], function (Anim
      ctx.drawImage(img_player, player.position.x, player.position.y);
      };*/
 
+
     /* clear screen */
     function clear() {
         ctx.clearRect(0, 0, constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT);
@@ -44,6 +48,9 @@ requirejs(["Animation", "Constants", "NPC", "Player", "Pokemon"], function (Anim
     function draw() {
         clear();
         player.draw(ctx);
+        if (menu.isOpen) {
+            menu.draw();
+        }
     }
 
     /* main loop */
@@ -67,6 +74,9 @@ requirejs(["Animation", "Constants", "NPC", "Player", "Pokemon"], function (Anim
             case 'ArrowLeft':
             case 'a':
                 player.moveLeft(constants.STEP_SIZE, 0);
+                break;
+            case 'Enter':
+                menu.toggleMenu();
                 break;
         }
     }
