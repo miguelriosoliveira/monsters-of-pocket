@@ -27,3 +27,7 @@ var NPC = function (id, name, sprite, pokemonList, items) {
  * next one indicates Object (0), character (1), important character (2)
  * the last six indicates that NPC unique numbers
  */
+
+define(function () {
+	return NPC;
+});

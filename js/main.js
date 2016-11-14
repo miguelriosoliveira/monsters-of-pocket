@@ -7,7 +7,7 @@ var canvas = document.getElementById('game-screen');
 var ctx = canvas.getContext("2d");
 var logger = document.getElementById('left-logger');
 
-requirejs(["Constants", "NPC", "Player", "Pokemon"], function (Constants, _NPC, _Player, _Pokemon) {
+requirejs(["Constants", "NPC", "Player", "Pokemon"], function (Constants, NPC, Player, Pokemon) {
 
     // constants of the game
     var constants = new Constants(canvas, logger);
@@ -51,19 +51,23 @@ requirejs(["Constants", "NPC", "Player", "Pokemon"], function (Constants, _NPC, 
 
     /* keyboard listener */
     function keyDown(evt) {
-        switch (evt.keyCode) {
-            case 38:  /* Up arrow was pressed */
+        switch (evt.key) {
+            case 'ArrowUp':
+            case 'w':
                 player.moveUp(constants.STEP_SIZE, 0);
                 break;
-            case 39:  /* Right arrow was pressed */
+            case 'ArrowRight':
+            case 'd':
                 // TODO: não deveria estar assim, adicionar width e height no player
-                player.moveRight(constants.STEP_SIZE, constants.SCREEN_WIDTH - constants.PLAYER_WIDTH);
+                player.moveRight(constants.STEP_SIZE, constants.SCREEN_WIDTH - player.width);
                 break;
-            case 40:  /* Down arrow was pressed */
+            case 'ArrowDown':
+            case 's':
                 // TODO: não deveria estar assim, adicionar width e height no player
-                player.moveDown(constants.STEP_SIZE, constants.SCREEN_HEIGHT - constants.PLAYER_HEIGHT);
+                player.moveDown(constants.STEP_SIZE, constants.SCREEN_HEIGHT - player.height);
                 break;
-            case 37:  /* Left arrow was pressed */
+            case 'ArrowLeft':
+            case 'a':
                 player.moveLeft(constants.STEP_SIZE, 0);
                 break;
         }

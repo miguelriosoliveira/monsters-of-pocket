@@ -20,10 +20,10 @@ var Player = function (name, gender) {
 	this.pokedex = 0;
 	this.initTime = new Date();
 	this.badges = [];
-
 	this.sprite = createImg('img/Sprites_Male_Player/sprite_sheet_male1-01.png');
-    this.width = 13; //sprite's width and height
-    this.height = 17;
+	/* TODO: pegar largura e altura do player e do sprite de um jeito melhor */
+	this.width = 12;
+	this.height = 16;
 
 	this.playTime = function () {
 		var currentTime = new Date();
@@ -66,7 +66,9 @@ var Player = function (name, gender) {
         // s: source image
         // d: destination canvas
         // ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
-        ctx.drawImage(this.sprite, 0, 0, this.width, this.height, this.position.x, this.position.y, this.width * 2, this.height * 2);
+		ctx.drawImage(this.sprite,
+			0, 0, this.width, this.height,
+			this.position.x, this.position.y, this.width, this.height);
 	}
 };
 
@@ -97,7 +99,31 @@ var Bag = function () {
 var Position = function (x, y) {
 	this.x = x;
 	this.y = y;
-    this.toString = function () {
-        return '(' + this.x + ', ' + this.y + ')';
-    }
+	this.toString = function () {
+		return '(' + this.x + ', ' + this.y + ')';
+	}
 };
+
+var Sprite = function (srcImg, frontX, frontY, backX, backY, leftX, leftY, rightX, rightY) {
+	this.src = srcImg;
+
+	this.frontSpriteX = frontX;
+	this.frontSpriteY = frontY;
+
+	this.backSpriteX = backX;
+	this.backSpriteY = backY;
+
+	this.leftSpriteX = leftX;
+	this.leftSpriteY = leftY;
+
+	this.rightSpriteX = rightX;
+	this.rightSpriteY = rightY;
+
+	this.toString = function () {
+		return '(' + this.x + ', ' + this.y + ')';
+	}
+};
+
+define(function () {
+	return Player;
+});
