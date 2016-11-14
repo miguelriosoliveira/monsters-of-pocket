@@ -39,6 +39,27 @@ var Player = function (name, gender) {
         if (this.position.y - delta >= upLimit) {
 			this.position.y -= delta;
 		}
+
+        if ((this.sprite_ID < 0) || (this.sprite_ID > 2)) {
+            this.sprite_ID = 0;
+            this.cropX = 2;
+            this.cropY = 2;
+        }
+        switch (this.sprite_ID) {
+            case 0:
+                this.cropX += 12;
+                this.sprite_ID += 1;
+                break;
+            case 1:
+                this.cropX += 12;
+                this.sprite_ID += 1;
+                break;
+            case 2:
+                this.cropX -= 12;
+                this.sprite_ID -= 1;
+                break;
+        }
+
         console.log(this.position);
 	};
 
@@ -46,6 +67,27 @@ var Player = function (name, gender) {
 		if (this.position.x + delta < rightLimit - this.width) {
 			this.position.x += delta;
 		}
+
+        if ((this.sprite_ID < 30) || (this.sprite_ID > 32)) {
+            this.sprite_ID = 30;
+            this.cropX = 2;
+            this.cropY = 48;
+        }
+        switch (this.sprite_ID) {
+            case 30:
+                this.cropX += 12;
+                this.sprite_ID += 1;
+                break;
+            case 31:
+                this.cropX += 12;
+                this.sprite_ID += 1;
+                break;
+            case 32:
+                this.cropX -= 12;
+                this.sprite_ID -= 1;
+                break;
+        }
+
         console.log(this.position);
 	};
 
@@ -53,6 +95,27 @@ var Player = function (name, gender) {
 		if (this.position.y + delta < downLimit - this.height) {
 			this.position.y += delta;
 		}
+
+        if ((this.sprite_ID < 10) || (this.sprite_ID > 12)) {
+            this.sprite_ID = 10;
+            this.cropX = 2;
+            this.cropY = 16;
+        }
+        switch (this.sprite_ID) {
+            case 10:
+                this.cropX += 12;
+                this.sprite_ID += 1;
+                break;
+            case 11:
+                this.cropX += 12;
+                this.sprite_ID += 1;
+                break;
+            case 12:
+                this.cropX -= 12;
+                this.sprite_ID -= 1;
+                break;
+        }
+
         console.log(this.position);
 	};
 
@@ -60,6 +123,27 @@ var Player = function (name, gender) {
         if (this.position.x - delta >= leftLimit) {
 			this.position.x -= delta;
 		}
+
+        if ((this.sprite_ID < 20) || (this.sprite_ID > 22)) {
+            this.sprite_ID = 20;
+            this.cropX = 2;
+            this.cropY = 32;
+        }
+        switch (this.sprite_ID) {
+            case 20:
+                this.cropX += 12;
+                this.sprite_ID += 1;
+                break;
+            case 21:
+                this.cropX += 12;
+                this.sprite_ID += 1;
+                break;
+            case 22:
+                this.cropX -= 12;
+                this.sprite_ID -= 1;
+                break;
+        }
+
         console.log(this.position);
 	};
 
@@ -70,7 +154,7 @@ var Player = function (name, gender) {
         // d: destination canvas
         // ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
 		ctx.drawImage(this.sprite,
-			0, 0, this.width, this.height,
+            this.cropX, this.cropY, this.width, this.height,
 			this.position.x, this.position.y, this.width, this.height);
 	}
 };

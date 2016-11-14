@@ -7,7 +7,7 @@ var canvas = document.getElementById('game-screen');
 var ctx = canvas.getContext("2d");
 var logger = document.getElementById('left-logger');
 
-requirejs(["Constants", "NPC", "Player", "Pokemon"], function (Constants, NPC, Player, Pokemon) {
+requirejs(["Animation", "Constants", "NPC", "Player", "Pokemon"], function (Animation, Constants, NPC, Player, Pokemon) {
 
     // constants of the game
     var constants = new Constants(canvas, logger);
@@ -71,5 +71,5 @@ requirejs(["Constants", "NPC", "Player", "Pokemon"], function (Constants, NPC, P
         }
     }
 
-    window.addEventListener('keydown', keyDown, true);
+    window.addEventListener('keydown', keyDown);
 });
