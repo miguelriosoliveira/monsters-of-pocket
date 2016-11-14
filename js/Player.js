@@ -24,6 +24,9 @@ var Player = function (name, gender) {
 	/* TODO: pegar largura e altura do player e do sprite de um jeito melhor */
 	this.width = 12;
 	this.height = 16;
+    this.cropX = 2; //Where in the sprite sheet the first sprite is located
+    this.cropY = 2;
+    this.sprite_ID = 0;
 
 	this.playTime = function () {
 		var currentTime = new Date();
@@ -104,26 +107,6 @@ var Position = function (x, y) {
 	}
 };
 
-var Sprite = function (srcImg, frontX, frontY, backX, backY, leftX, leftY, rightX, rightY) {
-	this.src = srcImg;
-
-	this.frontSpriteX = frontX;
-	this.frontSpriteY = frontY;
-
-	this.backSpriteX = backX;
-	this.backSpriteY = backY;
-
-	this.leftSpriteX = leftX;
-	this.leftSpriteY = leftY;
-
-	this.rightSpriteX = rightX;
-	this.rightSpriteY = rightY;
-
-	this.toString = function () {
-		return '(' + this.x + ', ' + this.y + ')';
-	}
-};
-
 define(function () {
-	return Player;
+    return Player;
 });
