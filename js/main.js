@@ -35,6 +35,51 @@ requirejs(["Constants", "NPC", "Player", "Pokemon"], function (Constants, NPC, P
      ctx.drawImage(img_player, player.position.x, player.position.y);
      };*/
 
+
+    // TODO ainda está bem feio isso, melhorar (talvez criar uma classe menu)
+    var menuWidth = (1 / 3) * constants.SCREEN_WIDTH;
+    var menuHeight = (1 / 3) * constants.SCREEN_HEIGHT;
+    var isMenuOpen = false;
+
+    function toggleMenu() {
+        isMenuOpen = !isMenuOpen;
+    }
+
+    function drawMenu() {
+        /* intern line */
+        ctx.beginPath();
+        ctx.lineWidth = "2";
+        ctx.strokeStyle = "black";
+        ctx.rect(constants.SCREEN_WIDTH - menuWidth + 3, 13, menuWidth - 16, menuHeight - 16);
+        ctx.stroke();
+
+        /* middle line */
+        ctx.beginPath();
+        ctx.lineWidth = "6";
+        ctx.strokeStyle = "red";
+        ctx.rect(constants.SCREEN_WIDTH - menuWidth - 1, 9, menuWidth - 8, menuHeight - 8);
+        ctx.stroke();
+
+        /* extern line */
+        ctx.beginPath();
+        ctx.lineWidth = "2";
+        ctx.strokeStyle = "black";
+        ctx.rect(constants.SCREEN_WIDTH - menuWidth - 5, 5, menuWidth, menuHeight);
+        ctx.stroke();
+
+        // ctx.beginPath();
+        // ctx.moveTo(20, 10);
+        // ctx.lineTo(80, 10);
+        // ctx.quadraticCurveTo(90, 10, 90, 20);
+        // ctx.lineTo(90, 80);
+        // ctx.quadraticCurveTo(90, 90, 80, 90);
+        // ctx.lineTo(20, 90);
+        // ctx.quadraticCurveTo(10, 90, 10, 80);
+        // ctx.lineTo(10, 20);
+        // ctx.quadraticCurveTo(10, 10, 20, 10);
+        // ctx.stroke();
+    }
+
     /* clear screen */
     function clear() {
         ctx.clearRect(0, 0, constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT);
@@ -44,6 +89,9 @@ requirejs(["Constants", "NPC", "Player", "Pokemon"], function (Constants, NPC, P
     function draw() {
         clear();
         player.draw(ctx);
+        if (isMenuOpen) {
+            drawMenu();
+        }
     }
 
     /* main loop */
@@ -67,6 +115,9 @@ requirejs(["Constants", "NPC", "Player", "Pokemon"], function (Constants, NPC, P
             case 'ArrowLeft':
             case 'a':
                 player.moveLeft(constants.STEP_SIZE, 0);
+                break;
+            case 'Enter':
+                toggleMenu();
                 break;
         }
     }

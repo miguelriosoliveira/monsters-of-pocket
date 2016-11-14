@@ -30,6 +30,10 @@ var Player = function (name, gender) {
 		return currentTime - this.initTime;
 	};
 
+	this.openBag = function () {
+		console.log('abrindo mochila...');
+	};
+
 	/* movement */
 
 	this.moveUp = function (delta, upLimit) {
