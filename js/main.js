@@ -40,44 +40,69 @@ requirejs(["Constants", "NPC", "Player", "Pokemon"], function (Constants, NPC, P
     var menuWidth = (1 / 3) * constants.SCREEN_WIDTH;
     var menuHeight = (1 / 3) * constants.SCREEN_HEIGHT;
     var isMenuOpen = false;
+    var padding = 20;
+    var delta = 10;
+    var menuX_left = constants.SCREEN_WIDTH - padding - menuWidth;
+    var menuY_up = padding;
+    var menuX_right = menuX_left + menuWidth;
+    var menuY_down = padding + menuHeight;
+    var options = ['pokémon', 'bag', 'player name', 'save', 'option', 'exit'];
 
     function toggleMenu() {
         isMenuOpen = !isMenuOpen;
     }
 
-    function drawMenu() {
-        /* intern line */
-        ctx.beginPath();
-        ctx.lineWidth = "2";
-        ctx.strokeStyle = "black";
-        ctx.rect(constants.SCREEN_WIDTH - menuWidth + 3, 13, menuWidth - 16, menuHeight - 16);
-        ctx.stroke();
-
-        /* middle line */
+    function drawContour() {
         ctx.beginPath();
         ctx.lineWidth = "6";
-        ctx.strokeStyle = "red";
-        ctx.rect(constants.SCREEN_WIDTH - menuWidth - 1, 9, menuWidth - 8, menuHeight - 8);
+        ctx.moveTo(menuX_left + delta, menuY_up);
+        ctx.lineTo(menuX_right - delta, menuY_up);
+        ctx.quadraticCurveTo(menuX_right, menuY_up, menuX_right, menuY_up + delta);
+        ctx.lineTo(menuX_right, menuY_down - delta);
+        ctx.quadraticCurveTo(menuX_right, menuY_down, menuX_right - delta, menuY_down);
+        ctx.lineTo(menuX_left + delta, menuY_down);
+        ctx.quadraticCurveTo(menuX_left, menuY_down, menuX_left, menuY_down - delta);
+        ctx.lineTo(menuX_left, menuY_up + delta);
+        ctx.quadraticCurveTo(menuX_left, menuY_up, menuX_left + delta, menuY_up);
         ctx.stroke();
+    }
 
-        /* extern line */
-        ctx.beginPath();
-        ctx.lineWidth = "2";
-        ctx.strokeStyle = "black";
-        ctx.rect(constants.SCREEN_WIDTH - menuWidth - 5, 5, menuWidth, menuHeight);
-        ctx.stroke();
+    function drawOptions() {
+        var fontSize = menuHeight / (options.length + 1);//16;
+        var optionNumber = 1;
+        options.forEach(function (option) {
+            ctx.fillStyle = "gray";
+            ctx.font = "bold " + fontSize + "px Arial";
+            ctx.fillText(option.toUpperCase(), menuX_left + delta, menuY_up + delta + fontSize * optionNumber);
+            optionNumber++;
+        });
+    }
 
+    function drawMenu() {
+        /* intern line */
         // ctx.beginPath();
-        // ctx.moveTo(20, 10);
-        // ctx.lineTo(80, 10);
-        // ctx.quadraticCurveTo(90, 10, 90, 20);
-        // ctx.lineTo(90, 80);
-        // ctx.quadraticCurveTo(90, 90, 80, 90);
-        // ctx.lineTo(20, 90);
-        // ctx.quadraticCurveTo(10, 90, 10, 80);
-        // ctx.lineTo(10, 20);
-        // ctx.quadraticCurveTo(10, 10, 20, 10);
+        // ctx.lineWidth = "2";
+        // ctx.strokeStyle = "black";
+        // ctx.rect(constants.SCREEN_WIDTH - menuWidth + 3, 13, menuWidth - 16, menuHeight - 16);
         // ctx.stroke();
+        //
+        // /* middle line */
+        // ctx.beginPath();
+        // ctx.lineWidth = "6";
+        // ctx.strokeStyle = "red";
+        // ctx.rect(constants.SCREEN_WIDTH - menuWidth - 1, 9, menuWidth - 8, menuHeight - 8);
+        // ctx.stroke();
+        //
+        // /* extern line */
+        // ctx.beginPath();
+        // ctx.lineWidth = "2";
+        // ctx.strokeStyle = "black";
+        // ctx.rect(constants.SCREEN_WIDTH - menuWidth - 5, 5, menuWidth, menuHeight);
+        // ctx.stroke();
+
+        /* contour and options */
+        drawContour();
+        drawOptions();
     }
 
     /* clear screen */
