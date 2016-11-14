@@ -28,7 +28,7 @@ function redirectLog(loggerTag) {
 	};
 }
 
-requirejs(["NPC", "Player", "Pokemon"], function (_NPC, _Player, _Pokemon) {
+requirejs(["Animations", "NPC", "Player", "Pokemon"], function (_Animations, _NPC, _Player, _Pokemon) {
 	init();
 
 	// criar player
@@ -55,20 +55,98 @@ requirejs(["NPC", "Player", "Pokemon"], function (_NPC, _Player, _Pokemon) {
 	};
 
 	//animaçao de andar
+	//var animation = new Animations();
 	function keyDown(evt) {
 		var delta = 10;
 		switch (evt.keyCode) {
 			case 38:  /* Up arrow was pressed */
+				//animation.up(player);
 				player.moveUp(delta, 0);
+				if ((player.sprite_ID < 0)||(player.sprite_ID > 2)){
+					player.sprite_ID = 0;
+					player.cropX = 2;
+					player.cropY = 2;
+				}
+				switch (player.sprite_ID){
+					case 0:
+						player.cropX += 12;
+						player.sprite_ID += 1;
+						break;
+					case 1:
+						player.cropX += 12;
+						player.sprite_ID += 1;
+						break;
+					case 2:
+						player.cropX -= 12;
+						player.sprite_ID -= 1;
+						break;
+				}
 				break;
 			case 39:  /* Right arrow was pressed */
 				player.moveRight(delta, canvas.getAttribute('width'));
+				if ((player.sprite_ID < 30)||(player.sprite_ID > 32)){
+					player.sprite_ID = 30;
+					player.cropX = 2;
+					player.cropY = 48;
+				}
+				switch (player.sprite_ID){
+					case 30:
+						player.cropX += 12;
+						player.sprite_ID += 1;
+						break;
+					case 31:
+						player.cropX += 12;
+						player.sprite_ID += 1;
+						break;
+					case 32:
+						player.cropX -= 12;
+						player.sprite_ID -= 1;
+						break;
+				}
 				break;
 			case 40:  /* Down arrow was pressed */
 				player.moveDown(delta, canvas.getAttribute('height'));
+				if ((player.sprite_ID < 10)||(player.sprite_ID > 12)){
+					player.sprite_ID = 10;
+					player.cropX = 2;
+					player.cropY = 16;
+				}
+				switch (player.sprite_ID){
+					case 10:
+						player.cropX += 12;
+						player.sprite_ID += 1;
+						break;
+					case 11:
+						player.cropX += 12;
+						player.sprite_ID += 1;
+						break;
+					case 12:
+						player.cropX -= 12;
+						player.sprite_ID -= 1;
+						break;
+				}
 				break;
 			case 37:  /* Left arrow was pressed */
 				player.moveLeft(delta, 0);
+				if ((player.sprite_ID < 20)||(player.sprite_ID > 22)){
+					player.sprite_ID = 20;
+					player.cropX = 2;
+					player.cropY = 32;
+				}
+				switch (player.sprite_ID){
+					case 20:
+						player.cropX += 12;
+						player.sprite_ID += 1;
+						break;
+					case 21:
+						player.cropX += 12;
+						player.sprite_ID += 1;
+						break;
+					case 22:
+						player.cropX -= 12;
+						player.sprite_ID -= 1;
+						break;
+				}
 				break;
 		}
 	}
@@ -84,7 +162,7 @@ requirejs(["NPC", "Player", "Pokemon"], function (_NPC, _Player, _Pokemon) {
 		// rect(0, 0, canvas.getAttribute('width'), canvas.getAttribute('height'));
 		ctx.fillStyle = "purple";
 		// circle(x, y, 10);
-		ctx.drawImage(img_player, 2, 2, player.width, player.height, player.position.x, player.position.y, player.width, player.height);
+		ctx.drawImage(img_player, player.cropX, player.cropY, player.width, player.height, player.position.x, player.position.y, player.width, player.height);
 	}
 
 	setInterval(draw, 10);
