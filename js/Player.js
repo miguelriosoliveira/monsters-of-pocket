@@ -20,12 +20,12 @@ var Player = function (name, gender) {
 	this.pokedex = 0;
 	this.initTime = new Date();
 	this.badges = [];
-	this.sprite = createImg('img/Sprites_Male_Player/sprite_sheet_male1-01.png');
+	this.sprite = createImg('img/Sprites_Male_Player/sprite_sheet_male1-02.png');
 	/* TODO: pegar largura e altura do player e do sprite de um jeito melhor */
-	this.width = 12;
-	this.height = 16;
-    this.cropX = 2; //Where in the sprite sheet the first sprite is located
-    this.cropY = 2;
+	this.width = 14;
+	this.height = 19;
+    this.cropX = 0; //Where in the sprite sheet the first sprite is located
+    this.cropY = 0;
     this.sprite_ID = 0;
 
 	this.playTime = function () {
@@ -42,20 +42,20 @@ var Player = function (name, gender) {
 
         if ((this.sprite_ID < 0) || (this.sprite_ID > 2)) {
             this.sprite_ID = 0;
-            this.cropX = 2;
-            this.cropY = 2;
+            this.cropX = 0;
+            this.cropY = 0;
         }
         switch (this.sprite_ID) {
             case 0:
-                this.cropX += 12;
+                this.cropX += this.width;
                 this.sprite_ID += 1;
                 break;
             case 1:
-                this.cropX += 12;
+                this.cropX += this.width;
                 this.sprite_ID += 1;
                 break;
             case 2:
-                this.cropX -= 12;
+                this.cropX -= this.width;
                 this.sprite_ID -= 1;
                 break;
         }
@@ -70,20 +70,20 @@ var Player = function (name, gender) {
 
         if ((this.sprite_ID < 30) || (this.sprite_ID > 32)) {
             this.sprite_ID = 30;
-            this.cropX = 2;
-            this.cropY = 48;
+            this.cropX = 0;
+            this.cropY = this.height * 3;
         }
         switch (this.sprite_ID) {
             case 30:
-                this.cropX += 12;
+                this.cropX += this.width;
                 this.sprite_ID += 1;
                 break;
             case 31:
-                this.cropX += 12;
+                this.cropX += this.width;
                 this.sprite_ID += 1;
                 break;
             case 32:
-                this.cropX -= 12;
+                this.cropX -= this.width;
                 this.sprite_ID -= 1;
                 break;
         }
@@ -98,20 +98,20 @@ var Player = function (name, gender) {
 
         if ((this.sprite_ID < 10) || (this.sprite_ID > 12)) {
             this.sprite_ID = 10;
-            this.cropX = 2;
-            this.cropY = 16;
+            this.cropX = 0;
+            this.cropY = this.height;
         }
         switch (this.sprite_ID) {
             case 10:
-                this.cropX += 12;
+                this.cropX += this.width;
                 this.sprite_ID += 1;
                 break;
             case 11:
-                this.cropX += 12;
+                this.cropX += this.width;
                 this.sprite_ID += 1;
                 break;
             case 12:
-                this.cropX -= 12;
+                this.cropX -= this.width;
                 this.sprite_ID -= 1;
                 break;
         }
@@ -126,20 +126,20 @@ var Player = function (name, gender) {
 
         if ((this.sprite_ID < 20) || (this.sprite_ID > 22)) {
             this.sprite_ID = 20;
-            this.cropX = 2;
-            this.cropY = 32;
+            this.cropX = 0;
+            this.cropY = this.height * 2;
         }
         switch (this.sprite_ID) {
             case 20:
-                this.cropX += 12;
+                this.cropX += this.width;
                 this.sprite_ID += 1;
                 break;
             case 21:
-                this.cropX += 12;
+                this.cropX += this.width;
                 this.sprite_ID += 1;
                 break;
             case 22:
-                this.cropX -= 12;
+                this.cropX -= this.width;
                 this.sprite_ID -= 1;
                 break;
         }
@@ -147,8 +147,32 @@ var Player = function (name, gender) {
         console.log(this.position);
 	};
 
-	/* draw */
+	//Reset sprite to stand position
+    this.standup = function (){
+        this.cropX = 0;
+        this.cropY = 0;
+        this.sprite_ID = 0;
+    };
 
+    this.standright = function (){
+        this.cropX = 0;
+        this.cropY = this.height * 3;
+        this.sprite_ID = 0;
+    };
+
+    this.standdown = function () {
+        this.cropX = 0;
+        this.cropY = this.height;
+        this.sprite_ID = 0;
+    };
+
+    this.standleft = function () {
+        this.cropX = 0;
+        this.cropY = this.height * 2;
+        this.sprite_ID = 0;
+    };
+
+	/* draw */
 	this.draw = function (ctx) {
         // s: source image
         // d: destination canvas

@@ -50,6 +50,28 @@ requirejs(["Animation", "Constants", "NPC", "Player", "Pokemon"], function (Anim
     setInterval(draw, 10);
 
     /* keyboard listener */
+    function keyUp(evt) {
+        switch (evt.key) {
+            case 'ArrowUp':
+            case 'w':
+                player.standup();
+                break;
+            case 'ArrowRight':
+            case 'd':
+                player.standright();
+                break;
+            case 'ArrowDown':
+            case 's':
+                player.standdown();
+                break;
+            case 'ArrowLeft':
+            case 'a':
+                player.standleft();
+                break;
+        }
+
+    }
+
     function keyDown(evt) {
         switch (evt.key) {
             case 'ArrowUp':
@@ -71,5 +93,8 @@ requirejs(["Animation", "Constants", "NPC", "Player", "Pokemon"], function (Anim
         }
     }
 
+    window.addEventListener('keyup', keyUp);
     window.addEventListener('keydown', keyDown);
 });
+
+//setTimeout(function(){code to be executed here}, 1000); 1000 == 1s
