@@ -7,18 +7,19 @@ define(function () {
      * Menu class
      * @constructor
      */
-    var Menu = function (screen_width, screen_height) {
+    let Menu = function (options, screen_width, screen_height) {
         // TODO ainda está bem feio isso, melhorar (talvez criar uma classe menu)
         this.width = Math.round((1 / 3) * screen_width);
         this.height = Math.round((1 / 3) * screen_height);
         this.isOpen = false;
-        this.padding = 20;
+        this.margin = 20;
         this.delta = 10;
-        this.xLeft = screen_width - this.padding - this.width;
-        this.yUp = this.padding;
+        this.xLeft = screen_width - this.margin - this.width;
+        this.yUp = this.margin;
         this.xRight = this.xLeft + this.width;
-        this.yDown = this.padding + this.height;
-        this.options = ['pokémon', 'bag', 'player name', 'save', 'option', 'exit'];
+        this.yDown = this.margin + this.height;
+        this.options = options;
+        this.currentOption = 0;
 
         this.toggleMenu = function () {
             this.isOpen = !this.isOpen;
@@ -40,19 +41,15 @@ define(function () {
         };
 
         this.drawOptions = function () {
-            var fontSize = this.height / (this.options.length + 1);//16;
-            var optionNumber = 1;
-            // this.options.forEach(function (option) {
-            //     ctx.fillStyle = "gray";
-            //     ctx.font = "bold " + fontSize + "px Arial";
-            //     ctx.fillText(option.toUpperCase(), this.xLeft + this.delta, this.yUp + fontSize * .4 + fontSize *
-            // optionNumber); optionNumber++; });
+            let fontSize = this.height / (this.options.length + 1);//16;
+            let optionNumber = 1;
 
-            for (var property in this.options) {
-                var option = this.options[property];
+            for (let property in this.options) {
+                let option = this.options[property];
                 ctx.fillStyle = "gray";
                 ctx.font = "bold " + fontSize + "px Arial";
-                ctx.fillText(option.toUpperCase(), this.xLeft + this.delta, this.yUp + fontSize * .4 + fontSize * optionNumber);
+                let pokeOption = pokeUpperCase(option.toUpperCase());
+                ctx.fillText(pokeOption, this.xLeft + this.delta, this.yUp + fontSize * .4 + fontSize * optionNumber);
                 optionNumber++;
             }
         };
@@ -63,6 +60,25 @@ define(function () {
             this.drawOptions();
         };
     };
+
+    function pokeUpperCase(string) {
+        let result = string;
+
+        string.replace(/([Á])|([É])|([Í])|([Ó])|([Ú])/g, function () {
+            /*
+             Arguments of this function may vary depending on the size of the RegExp input:
+             * match:	    The matched substring. (Corresponds to $& above.)
+             * p1, p2, ...:	The nth parenthesized submatch string, provided the first argument to replace() was a RegExp object. (Corresponds to $1, $2, etc. above.) For example, if /(\a+)(\b+)/, was given, p1 is the match for \a+, and p2 for \b+.
+             * offset:    	The offset of the matched substring within the whole string being examined. (For example, if the whole string was 'abcd', and the matched substring was 'bc', then this argument will be 1.)
+             * string:       The whole string being examined.
+             */
+            let accentedChar = arguments[0].toLowerCase();
+            let offset = arguments[arguments.length - 2];
+            result = string.substr(0, offset) + accentedChar + string.substr(offset + 1);
+        });
+
+        return result;
+    }
 
     return Menu;
 });

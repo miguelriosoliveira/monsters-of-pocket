@@ -27,7 +27,7 @@ var Constants = function (canvas, logger) {
     /* logger setup */
     logger.style.width = ((1 / 3) * screen.availWidth).toString() + 'px';
     logger.style.height = this.SCREEN_HEIGHT + 'px';
-    redirectLog(logger);
+    // redirectLog(logger);
 };
 
 /* redirect messages to the logger */

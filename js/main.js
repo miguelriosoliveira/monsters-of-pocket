@@ -3,41 +3,18 @@
  */
 
 /* globals */
-var canvas = document.getElementById('game-screen');
-var ctx = canvas.getContext("2d");
-var logger = document.getElementById('left-logger');
+let canvas = document.getElementById('game-screen');
+let ctx = canvas.getContext("2d");
+let logger = document.getElementById('left-logger');
 
-requirejs(["Animation", "Constants", "Menu", "NPC", "Player", "Pokemon"], function (Constants, Menu, NPC, Player, Pokemon) {
+/* let's try to keep only the classes we're truly using */
+requirejs(["Constants", "Menu", "Player"],
+    function (Constants, Menu, Player) {
 
-    // constants of the game
-    var constants = new Constants(canvas, logger);
-
-    // the menu
-    var menu = new Menu(constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT);
-
-    // the player
-    var player = new Player('Red', 'M');
-
-    // criar prof carvalho e rival
-    /*var bulbasaur	= new Pokemon('bulbasaur', 1);
-     var squirtle	= new Pokemon('squirtle', 1);
-     var charmander	= new Pokemon('charmander', 1);
-     var starters = [bulbasaur, squirtle, charmander];
-     var items = ['pokedex'];
-     var oak = new NPC('Professor Oak', '', starters, items);
-     var rival = new NPC('Blue', '', [], []);*/
-
-    //sprite do player na tela
-    /*var img_player = new Image();
-
-     img_player.src = player.sprite;
-     img_player.src += 'Player_Back_0.png';
-
-     img_player.onload = function () {
-     player.position = new Position(Constants.SCREEN_WIDTH / 2, Constants.SCREEN_HEIGHT / 2);
-     ctx.drawImage(img_player, player.position.x, player.position.y);
-     };*/
-
+        let constants = new Constants(canvas, logger);
+        let menuOptions = ['pokédex', 'pokémon', 'bag', 'player name', 'save', 'option', 'exit'];
+        let menu = new Menu(menuOptions, constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT);
+        let player = new Player('Red', 'M');
 
     /* clear screen */
     function clear() {
