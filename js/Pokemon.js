@@ -9,7 +9,7 @@
  * @param nickname
  * @constructor
  */
-var Pokemon = function (species, level, nickname) {
+let Pokemon = function (species, level, nickname) {
     this.species = species;
     this.level = level;
     this.nickname = nickname || this.species;
@@ -46,7 +46,7 @@ var Pokemon = function (species, level, nickname) {
  * @param type
  * @constructor
  */
-var Species = function (id, name, hp, att, def, spd, satt, sdef, base_exp, type) {
+let Species = function (id, name, hp, att, def, spd, satt, sdef, base_exp, type) {
     this.id = id;
     this.name = name;
     this.hp = hp;
@@ -70,7 +70,7 @@ var Species = function (id, name, hp, att, def, spd, satt, sdef, base_exp, type)
  * @param accuracy
  * @constructor
  */
-var Move = function (id, name, type, category, pp, power, accuracy) {
+let Move = function (id, name, type, category, pp, power, accuracy) {
     this.id = id;
     this.name = name;
     this.type = type;

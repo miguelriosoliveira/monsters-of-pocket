@@ -11,7 +11,7 @@
  * @param items
  * @constructor
  */
-var NPC = function (id, name, sprite, pokemonList, items) {
+let NPC = function (id, name, sprite, pokemonList, items) {
 	this.id = id;	//NPC's IDs wont be random generated, because they follow a logic order
 	this.name = name;
 	this.sprite = sprite;

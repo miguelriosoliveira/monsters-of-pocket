@@ -8,7 +8,7 @@
  * @param gender
  * @constructor
  */
-var Player = function (name, gender) {
+let Player = function (name, gender) {
 	this.name = name;
 	this.gender = gender;
 	this.pokemonList = [];
@@ -29,7 +29,7 @@ var Player = function (name, gender) {
     this.sprite_ID = 0;
 
 	this.playTime = function () {
-		var currentTime = new Date();
+        let currentTime = new Date();
 		return currentTime - this.initTime;
 	};
 
@@ -165,14 +165,14 @@ var Player = function (name, gender) {
 
 /* creates an id based on  */
 function createId() {
-    var d = new Date();
-    var id = '' + d.getFullYear() + d.getMonth() + d.getDate() + d.getHours() + d.getMinutes() + d.getSeconds();
+    let d = new Date();
+    let id = '' + d.getFullYear() + d.getMonth() + d.getDate() + d.getHours() + d.getMinutes() + d.getSeconds();
     return Number(id);
 }
 
 /* creates an image obj */
 function createImg(imgPath) {
-    var img = new Image();
+    let img = new Image();
     img.src = imgPath;
     return img;
 }
@@ -181,13 +181,13 @@ function createImg(imgPath) {
  * Bag class.
  * @constructor
  */
-var Bag = function () {
+let Bag = function () {
 	this.items = [];
 	this.keyItems = [];
 	this.pokeballs = [];
 };
 
-var Position = function (x, y) {
+let Position = function (x, y) {
 	this.x = x;
 	this.y = y;
 	this.toString = function () {

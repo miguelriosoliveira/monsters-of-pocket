@@ -9,7 +9,7 @@
  * @param logger
  * @constructor
  */
-var Constants = function (canvas, logger) {
+let Constants = function (canvas, logger) {
     /* game screen values */
     this.SCREEN_WIDTH = Math.round((3 / 5) * screen.availWidth);
     this.SCREEN_HEIGHT = Math.round((3 / 5) * screen.availHeight);

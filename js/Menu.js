@@ -2,13 +2,12 @@
  * Created by miguel on 14/11/16.
  */
 
-define(function () {
+define(['UI'], function (UI) {
     /**
      * Menu class
      * @constructor
      */
     let Menu = function (options, screen_width, screen_height) {
-        // TODO ainda está bem feio isso, melhorar (talvez criar uma classe menu)
         this.width = Math.round((1 / 3) * screen_width);
         this.height = Math.round((1 / 3) * screen_height);
         this.isOpen = false;

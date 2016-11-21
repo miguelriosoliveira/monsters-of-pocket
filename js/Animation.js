@@ -6,7 +6,7 @@
  * Animation class
  * @constructor
  */
-var Animation = function () {
+let Animation = function () {
     this.up = function (object1) {
         if ((object1.sprite_ID < 0) || (object1.sprite_ID > 2)) {
             object1.sprite_ID = 0;
