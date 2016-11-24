@@ -6,14 +6,15 @@
 let canvas = document.getElementById('game-screen');
 let ctx = canvas.getContext("2d");
 let logger = document.getElementById('left-logger');
+let constants;
 
 /* let's try to keep only the classes we're truly using */
-requirejs(["Constants", "Menu", "Player"],
-    function (Constants, Menu, Player) {
+requirejs(["Constants", "UI", "Player"],
+    function (_Constants, UI, Player) {
 
-        let constants = new Constants(canvas, logger);
+        constants = new Constants(canvas, logger);
         let menuOptions = ['pokédex', 'pokémon', 'bag', 'player name', 'save', 'option', 'exit'];
-        let menu = new Menu(menuOptions, constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT);
+        let menu = new UI(constants.SCREEN_WIDTH, 220, menuOptions);
         let player = new Player('Red', 'M');
 
     /* clear screen */
@@ -53,7 +54,7 @@ requirejs(["Constants", "Menu", "Player"],
                 player.moveLeft(constants.STEP_SIZE, 0);
                 break;
             case 'Enter':
-                menu.toggleMenu();
+                menu.toggle();
                 break;
         }
     }

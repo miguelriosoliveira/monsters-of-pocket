@@ -2,6 +2,7 @@
  * Created by miguel on 17/09/16.
  */
 
+define(['Position'], function (Position) {
 /**
  * Player class
  * @param name
@@ -187,14 +188,5 @@ let Bag = function () {
 	this.pokeballs = [];
 };
 
-let Position = function (x, y) {
-	this.x = x;
-	this.y = y;
-	this.toString = function () {
-		return '(' + this.x + ', ' + this.y + ')';
-	}
-};
-
-define(function () {
     return Player;
 });

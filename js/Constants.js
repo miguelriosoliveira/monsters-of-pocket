@@ -13,6 +13,7 @@ let Constants = function (canvas, logger) {
     /* game screen values */
     this.SCREEN_WIDTH = Math.round((3 / 5) * screen.availWidth);
     this.SCREEN_HEIGHT = Math.round((3 / 5) * screen.availHeight);
+    this.SCREEN_PADDING = 15; //pixels
 
     /* player values */
     this.PLAYER_WIDTH = this.PLAYER_HEIGHT = Math.round((1 / 100) * this.SCREEN_WIDTH);
@@ -31,13 +32,13 @@ let Constants = function (canvas, logger) {
 };
 
 /* redirect messages to the logger */
-function redirectLog(loggerTag) {
-    console.log = function (message) {
-        loggerTag.innerHTML += message + '\n';
-        loggerTag.scrollTop = loggerTag.scrollHeight;
-    };
-}
+// function redirectLog(loggerTag) {
+//     console.log = function (message) {
+//         loggerTag.innerHTML += message + '\n';
+//         loggerTag.scrollTop = loggerTag.scrollHeight;
+//     };
+// }
 
-define(function () {
-    return Constants;
-});
+// define(function () {
+//     return Constants;
+// });

@@ -32,7 +32,6 @@ let Pokemon = function (species, level, nickname) {
 
 /**
  * Pokémon species class. Like bulbassaur, pikachu, squirtle, etc.
- * TODO: we need a list of all 151 species
  * Pokemon base stats: Hp, Attack, Defense, Speed, Special Attack, Special Defense
  * @param id
  * @param name
