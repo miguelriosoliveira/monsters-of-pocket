@@ -18,11 +18,12 @@ define(['Constants', 'Triangle'], function (_Constants, Triangle) {
         this.xRight = this.xLeft + this.width;
         this.yDown = this.yUp + this.height;
         this.options = options;
-        this.currentOption = 0;
-        this.selectorSize = 10;
+        this.currentOption = 1;
+        this.selectorSize = 7;
 
 
-        // TODO put this in the right place
+        // TODO put this in the right place (adjust menu position if the position passed in the arguments is out of
+        // screen
         let diffX = this.xRight - constants.SCREEN_WIDTH + constants.SCREEN_PADDING; // TODO figure out that warning
         if (diffX > 0) {
             this.xLeft -= diffX;
@@ -34,7 +35,11 @@ define(['Constants', 'Triangle'], function (_Constants, Triangle) {
             this.yDown += diffY;
         }
 
-        this.selector = new Triangle(this.xLeft, this.yUp, this.xLeft + this.selectorSize, this.yUp + this.selectorSize, this.xLeft, this.yUp + this.selectorSize * 2);
+        this.selector = new Triangle(
+            this.xLeft + this.selectorSize, this.yUp + this.selectorSize,
+            this.xLeft + this.selectorSize * 2, this.yUp + this.selectorSize * 2,
+            this.xLeft + this.selectorSize, this.yUp + this.selectorSize * 3
+        );
 
 
         /**
@@ -42,6 +47,40 @@ define(['Constants', 'Triangle'], function (_Constants, Triangle) {
          */
         this.toggle = function () {
             this.isOpen = !this.isOpen;
+        };
+
+        /**
+         * Move the selector in the menu
+         * @param direction 'up' or 'down'
+         */
+        this.move = function (direction) {
+            Object.getOwnPropertyNames(this).filter(function (p) {
+                if (typeof this[p] === 'function') {
+                    if (this.isOpen && p.toLowerCase().indexOf('move' + direction) >= 0) {
+                        this[p].call(this);
+                    }
+                }
+            }, this);
+        };
+
+        /**
+         * Move the selector up
+         */
+        this.moveUp = function () {
+            console.log('moving up');
+            this.selector.p1.y -= this.fontSize;
+            this.selector.p2.y -= this.fontSize;
+            this.selector.p3.y -= this.fontSize;
+        };
+
+        /**
+         * Move the selector down
+         */
+        this.moveDown = function () {
+            console.log('moving down');
+            this.selector.p1.y += this.fontSize;
+            this.selector.p2.y += this.fontSize;
+            this.selector.p3.y += this.fontSize;
         };
 
         /**
@@ -81,18 +120,20 @@ define(['Constants', 'Triangle'], function (_Constants, Triangle) {
         this.drawOptions = function () {
             this.fontSize = this.height / (this.options.length + 1);
             let optionNumber = 1;
-            let delta = 10;
 
             for (let property in this.options) {
                 let option = this.options[property];
                 ctx.fillStyle = "gray";
                 ctx.font = "bold " + this.fontSize + "px Arial";
                 let pokeOption = pokeUpperCase(option.toUpperCase());
-                ctx.fillText(pokeOption, this.xLeft + delta, this.yUp + this.fontSize * .4 + this.fontSize * optionNumber);
+                ctx.fillText(pokeOption, this.selector.p2.x, this.yUp + this.fontSize * .4 + this.fontSize * optionNumber);
                 optionNumber++;
             }
         };
 
+        /**
+         * Draws the option selector of the menu
+         */
         this.drawSelector = function () {
             ctx.beginPath();
             ctx.moveTo(this.selector.p1.x, this.selector.p1.y);

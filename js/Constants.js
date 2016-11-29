@@ -10,7 +10,10 @@
  * @constructor
  */
 let Constants = function (canvas, logger) {
-    /* game screen values */
+    /* game values */
+    this.GAME_PAUSED = false;
+
+    /* screen values */
     this.SCREEN_WIDTH = Math.round((3 / 5) * screen.availWidth);
     this.SCREEN_HEIGHT = Math.round((3 / 5) * screen.availHeight);
     this.SCREEN_PADDING = 15; //pixels

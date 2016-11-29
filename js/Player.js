@@ -2,7 +2,7 @@
  * Created by miguel on 17/09/16.
  */
 
-define(['Position'], function (Position) {
+define(['Constants', 'Position'], function (_Constants, Position) {
 /**
  * Player class
  * @param name
@@ -39,6 +39,16 @@ let Player = function (name, gender) {
 	};
 
 	/* movement */
+
+    this.move = function (direction, delta, limit) {
+        Object.getOwnPropertyNames(this).filter(function (p) {
+            if (typeof this[p] === 'function') {
+                if (!constants.GAME_PAUSED && p.toLowerCase().indexOf('move' + direction) >= 0) {
+                    this[p].call(this, delta, limit);
+                }
+            }
+        }, this);
+    };
 
 	this.moveUp = function (delta, upLimit) {
         if (this.position.y - delta >= upLimit) {
