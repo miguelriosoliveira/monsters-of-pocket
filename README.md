@@ -1,5 +1,5 @@
 # monsters-of-pocket
-Pokémon game made just for learning purposes.
+[INCOMPLETE/HIATUS] Pokémon game made just for learning purposes.
 
 ---
 
